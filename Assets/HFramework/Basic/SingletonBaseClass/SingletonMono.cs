@@ -3,7 +3,7 @@
 /// <summary>
 /// 单例模式基类
 /// </summary>
-public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance = null;
     public static T Instance => instance;
@@ -11,7 +11,7 @@ public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (instance == null)
             instance = this as T;
-        else
+        else if (instance != this as T)
             Destroy(gameObject);
     }
 }
